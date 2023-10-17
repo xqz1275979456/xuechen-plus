@@ -42,6 +42,7 @@ public class TeachplanServiceImpl implements TeachplanService {
             Long courseId = saveTeachplanDto.getCourseId();
             teachplan.setOrderby(getTeachplanCount(courseId,parentid));
             teachplanMapper.insert(teachplan);
+
         }else {
             //修改
             Teachplan teachplan = teachplanMapper.selectById(teachplanId);
