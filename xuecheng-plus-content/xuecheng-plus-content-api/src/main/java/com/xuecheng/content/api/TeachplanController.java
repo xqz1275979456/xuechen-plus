@@ -6,8 +6,10 @@ import com.xuecheng.content.service.TeachplanService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -30,6 +32,25 @@ public class TeachplanController {
     @PostMapping("/teachplan")
     public void saveTeachplan(@RequestBody SaveTeachplanDto teachplanDto){
         teachplanService.saveTeachplan(teachplanDto);
+    }
+    @ApiOperation("删除课程计划")
+    @DeleteMapping("/teachplan/{teachplanId}")
+    public void deleteTeachplan(@PathVariable Long teachplanId){
+        teachplanService.deleteTeachplan(teachplanId);
+    }
+    @ApiOperation("课程计划向上移动")
+    @PostMapping("/teachplan/movedown/{id}")
+    public void  movedownTeachplan(@PathVariable Long id,HttpServletRequest request){
+        StringBuffer url = request.getRequestURL();
+        String type = url.substring(url.lastIndexOf("/") + 1);
+        teachplanService.moveTeachplan(type,id);
+    }
+    @ApiOperation("课程计划向下移动")
+    @PostMapping("/teachplan/moveup/{id}")
+    public void  moveupTeachplan(@PathVariable Long id,HttpServletRequest request){
+        StringBuffer url = request.getRequestURL();
+        String type = url.substring(url.lastIndexOf("/") + 1);
+        teachplanService.moveTeachplan(type,id);
     }
 
 
