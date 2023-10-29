@@ -2,6 +2,7 @@ package com.xuecheng.media.service;
 
 import com.xuecheng.base.model.PageParams;
 import com.xuecheng.base.model.PageResult;
+import com.xuecheng.base.model.RestResponse;
 import com.xuecheng.media.model.dto.QueryMediaParamsDto;
 import com.xuecheng.media.model.dto.UploadFileParamsDto;
 import com.xuecheng.media.model.dto.UploadFileResultDto;
@@ -38,4 +39,42 @@ public interface MediaFileService {
  public UploadFileResultDto uploadFile(Long companyId, UploadFileParamsDto uploadFileParamsDto, String localFilePath);
 
  public MediaFiles addMediaFilesToDb(Long companyId,String fileMd5,UploadFileParamsDto uploadFileParamsDto,String bucket,String objectName);
+
+ /**
+  * 检测分块文件是否存在
+  *
+  * @param fileMd5    文件的md5
+  * @param chunkIndex 分块序号
+  * @return {@link RestResponse}<{@link Boolean}> false 不存在，true存在
+  */
+ public RestResponse<Boolean> checkChunk(String fileMd5,int chunkIndex);
+
+ /**
+  * 检查文件是否存在
+  *
+  * @param fileMd5 文件的md5
+  * @return {@link RestResponse}<{@link Boolean}>  false 不存在，true存在
+  */
+ public RestResponse<Boolean> checkFile(String fileMd5);
+
+ /**
+  * 上传分块文件
+  *
+  * @param fileMd5            文件的md5
+  * @param chunk              f分块序号
+  * @param localChunkFilePath 分块块文件本地路径
+  * @return {@link RestResponse}
+  */
+ public RestResponse uploadChunk(String fileMd5,int chunk,String localChunkFilePath);
+
+ /**
+  * 合并分块文件
+  *
+  * @param companyId           机构id
+  * @param fileMd5             文件的md5
+  * @param chunkTotal          分块总和
+  * @param uploadFileParamsDto 文件信息
+  * @return {@link RestResponse}
+  */
+ public RestResponse mergeChunks(Long companyId,String fileMd5,int chunkTotal,UploadFileParamsDto uploadFileParamsDto);
 }
