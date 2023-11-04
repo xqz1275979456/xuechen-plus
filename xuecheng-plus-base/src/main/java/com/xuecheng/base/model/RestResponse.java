@@ -4,13 +4,15 @@ import lombok.Data;
 import lombok.ToString;
 
 /**
- * @description 通用结果类型
+ * rest响应
+ *
  * @author Mr.M
- * @date 2022/9/13 14:44
  * @version 1.0
+ * @description 通用结果类型
+ * @date 2022/9/13 14:44
  */
 
- @Data
+@Data
  @ToString
 public class RestResponse<T> {
 

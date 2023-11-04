@@ -4,7 +4,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- * 修改课程
+ * 修改课程模型类
  *
  * @author xuqizheng
  * @date 2023/10/16

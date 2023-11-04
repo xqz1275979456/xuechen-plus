@@ -25,7 +25,7 @@ spring:
           - data-id: swagger-${spring.profiles.active}.yaml
             group: xuecheng-plus-common
             refresh: true
-          - data-id: logging-${spring.profiles.active}.yaml
+          - data-id: freemarker-config-dev.yaml
             group: xuecheng-plus-common
             refresh: true
   profiles:

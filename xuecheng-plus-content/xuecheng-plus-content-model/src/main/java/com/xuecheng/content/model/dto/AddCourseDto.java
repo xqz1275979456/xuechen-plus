@@ -9,11 +9,12 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 
+
 /**
- * @description 添加课程dto
- * @author Mr.M
- * @date 2022/9/7 17:40
- * @version 1.0
+ * 添加课程模型类
+ *
+ * @author xuqizheng
+ * @date 2023/11/03
  */
 @Data
 @ApiModel(value="AddCourseDto", description="新增课程基本信息")

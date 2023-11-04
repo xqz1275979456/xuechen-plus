@@ -11,12 +11,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-
+/**
+ * 课程分类实现
+ *
+ * @author xuqizheng
+ * @date 2023/10/12
+ */
 @Service
 @Slf4j
 public class CourseCategoryServiceImpl implements CourseCategoryService {
     @Autowired
     CourseCategoryMapper courseCategoryMapper;
+    /**
+     * 课程分类树型结构查询
+     *
+     * @param id id
+     * @return {@link List}<{@link CourseCategoryTreeDto}>
+     */
     @Override
     public List<CourseCategoryTreeDto> queryTreeNodes(String id) {
         //调用mapper查询出分类信息

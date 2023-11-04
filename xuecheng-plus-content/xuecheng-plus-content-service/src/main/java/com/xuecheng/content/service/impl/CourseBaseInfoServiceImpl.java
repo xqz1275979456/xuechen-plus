@@ -25,7 +25,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
-
+/**
+ * 课程信息管理实现
+ *
+ * @author xuqizheng
+ * @date 2023/10/12
+ */
 @Service
 @Slf4j
 public class CourseBaseInfoServiceImpl implements CourseBaseInfoService {
@@ -35,6 +40,13 @@ public class CourseBaseInfoServiceImpl implements CourseBaseInfoService {
     CourseMarketMapper courseMarketMapper;
     @Autowired
     CourseCategoryMapper courseCategoryMapper;
+    /**
+     * 课程分页查询
+     *
+     * @param pageParams      分页查询参数
+     * @param courseParamsDto 查询条件
+     * @return {@link PageResult}<{@link CourseBase}> 查询结果
+     */
     @Transactional
     @Override
     public PageResult<CourseBase> queryCourseBaseList(PageParams pageParams, QueryCourseParamsDto courseParamsDto) {
@@ -58,6 +70,13 @@ public class CourseBaseInfoServiceImpl implements CourseBaseInfoService {
         return courseBasePageResult;
     }
 
+    /**
+     * 新增课程
+     *
+     * @param companyId    机构Id
+     * @param addCourseDto 课程信息
+     * @return {@link CourseBaseInfoDto} 课程详细信息
+     */
     @Transactional
     @Override
     public CourseBaseInfoDto createCourseBase(Long companyId, AddCourseDto dto) {
@@ -124,7 +143,13 @@ public class CourseBaseInfoServiceImpl implements CourseBaseInfoService {
         //从数据库中查询课程的详细信息
         return getCourseBaseInfo(courseId);
     }
-    //根据查询课程信息
+
+    /**
+     * 根据课程id查询课程信息
+     *
+     * @param courseId 课程id
+     * @return {@link CourseBaseInfoDto} 课程的详细信息
+     */
     public CourseBaseInfoDto getCourseBaseInfo(Long courseId){
         //从课程基本信息表查询
         CourseBase courseBase = courseBaseMapper.selectById(courseId);
@@ -148,6 +173,13 @@ public class CourseBaseInfoServiceImpl implements CourseBaseInfoService {
         return courseBaseInfoDto;
     }
 
+    /**
+     * 修改课程
+     *
+     * @param courseId      机构id
+     * @param editCourseDto 修改课程信息
+     * @return {@link CourseBaseInfoDto} 课程的详细信息
+     */
     @Override
     public CourseBaseInfoDto updateCourseBase(Long companyId, EditCourseDto editCourseDto) {
 

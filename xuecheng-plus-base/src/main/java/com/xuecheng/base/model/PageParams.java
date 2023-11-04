@@ -19,7 +19,7 @@ public class PageParams {
     private Long pageNo = 1L;
     //每页显示记录数
     @ApiModelProperty("每页记录数")
-    private Long pageSize = 1L;
+    private Long pageSize = 10L;
 
     public PageParams(Long pageNo, Long pageSize) {
         this.pageNo = pageNo;

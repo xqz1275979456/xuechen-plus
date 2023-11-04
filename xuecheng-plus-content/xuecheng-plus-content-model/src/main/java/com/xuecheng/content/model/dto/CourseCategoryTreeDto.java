@@ -8,7 +8,7 @@ import lombok.Data;
 import java.util.List;
 
 /**
- * 课程类别树dto
+ *
  * 课程分类查询模型类
  *
  * @author xuqizheng

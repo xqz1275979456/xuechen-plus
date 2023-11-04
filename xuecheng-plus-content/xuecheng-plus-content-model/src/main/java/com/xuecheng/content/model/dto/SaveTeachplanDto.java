@@ -3,7 +3,7 @@ package com.xuecheng.content.model.dto;
 import lombok.Data;
 
 /**
- * 新增大章节、小章节，修改大小章节信息
+ * 新增大章节、小章节，修改大小章节信息模型类
  *
  * @author xuqizheng
  * @date 2023/10/17
