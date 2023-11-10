@@ -7,11 +7,8 @@ import com.xuecheng.media.model.dto.QueryMediaParamsDto;
 import com.xuecheng.media.model.dto.UploadFileParamsDto;
 import com.xuecheng.media.model.dto.UploadFileResultDto;
 import com.xuecheng.media.model.po.MediaFiles;
-import io.minio.UploadObjectArgs;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.io.File;
-import java.util.List;
 
 
 /**
@@ -42,10 +39,11 @@ public interface MediaFileService {
   * @param companyId           机构id
   * @param uploadFileParamsDto 文件信息
   * @param localFilePath       文件本地路径
+  * @param objectName  如果传入objectName要按objectName的目录去存储，如果不传就按年月日结构存储
   * @return {@link UploadFileResultDto}
   */
 
- public UploadFileResultDto uploadFile(Long companyId, UploadFileParamsDto uploadFileParamsDto, String localFilePath);
+ public UploadFileResultDto uploadFile(Long companyId, UploadFileParamsDto uploadFileParamsDto, String localFilePath,String objectName);
 
  /**
   * 将文件信息添加到文件表
@@ -121,5 +119,13 @@ public interface MediaFileService {
   * @return 下载后的文件
   */
  public File downloadFileFromMinIO(String bucket, String objectName);
+
+ /**
+  * 根据媒资id查询文件信息
+  *
+  * @param mediaId 媒体id
+  * @return {@link MediaFiles}
+  */
+ public MediaFiles getFileById(String mediaId);
 
 }
